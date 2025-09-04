@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class InMemoryOrderRepository implements Repository<Order, Long> {
-    private Map<Long, Order> storage = new HashMap<>();
+    private final Map<Long, Order> storage = new HashMap<>();
     private final AtomicLong idCounter = new AtomicLong(0);
 
     @Override

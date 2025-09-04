@@ -1,5 +1,8 @@
 package com.restoflow.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum Unit {
     KG("kilogram"),
     GR("gram"),
@@ -10,9 +13,5 @@ public enum Unit {
 
     Unit(String displayName) {
         this.displayName = displayName;
-    }
-
-    public String getDisplayName() {
-        return displayName;
     }
 }

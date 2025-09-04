@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class InMemoryMenuItemRepository implements Repository<MenuItem, Long> {
-    private Map<Long, MenuItem> storage = new HashMap<>();
+    private final Map<Long, MenuItem> storage = new HashMap<>();
     private final AtomicLong idCounter = new AtomicLong(0);
 
     @Override

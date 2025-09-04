@@ -8,7 +8,7 @@ public abstract class MenuItem {
     private String name;
     private Double price;
 
-    public MenuItem(String name, Double price) {
+    protected MenuItem(String name, Double price) {
         this.name = name;
         this.price = price;
     }
