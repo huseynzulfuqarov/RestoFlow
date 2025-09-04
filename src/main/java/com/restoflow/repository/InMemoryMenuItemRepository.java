@@ -2,19 +2,24 @@ package com.restoflow.repository;
 
 import com.restoflow.domain.MenuItem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class InMemoryMenuItemRepository implements Repository<MenuItem, Long> {
-    private Map<Long, MenuItem> storage = new HashMap<Long, MenuItem>();
+    private Map<Long, MenuItem> storage = new HashMap<>();
+    private final AtomicLong idCounter = new AtomicLong(0);
+
     @Override
     public MenuItem save(MenuItem entity) {
         if (entity.getId() == null) {
-            entity.setId(MenuItem.counter.incrementAndGet());
+            entity.setId(idCounter.incrementAndGet());
         }
-        return storage.put(entity.getId(), entity);
+        storage.put(entity.getId(), entity);
+        return entity;
     }
 
     @Override
@@ -24,7 +29,7 @@ public class InMemoryMenuItemRepository implements Repository<MenuItem, Long> {
 
     @Override
     public List<MenuItem> findAll() {
-        return List.of();
+        return new ArrayList<>(storage.values());
     }
 
     @Override

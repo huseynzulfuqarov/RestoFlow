@@ -2,18 +2,24 @@ package com.restoflow.repository;
 
 import com.restoflow.domain.Ingredient;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class InMemoryIngredientRepository implements Repository<Ingredient, Long> {
     private final Map<Long, Ingredient> storage = new HashMap<>();
+    private final AtomicLong idCounter = new AtomicLong(0);
 
     @Override
     public Ingredient save(Ingredient entity) {
         if (entity.getId() == null) {
-            entity.setId(Ingredient.counter.incrementAndGet()); //bu hissede classin oz id generator'nu istifade ede bilmirem, bunun ucun public etdim.
+            entity.setId(idCounter.incrementAndGet());
         }
-       return storage.put(entity.getId(), entity);
+        storage.put(entity.getId(), entity);
+        return entity;
     }
 
     @Override
@@ -23,7 +29,7 @@ public class InMemoryIngredientRepository implements Repository<Ingredient, Long
 
     @Override
     public List<Ingredient> findAll() {
-        return  new ArrayList<>(storage.values());
+        return new ArrayList<>(storage.values());
     }
 
     @Override
