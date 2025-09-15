@@ -1,6 +1,6 @@
 package com.restoflow.repository;
 
-import com.restoflow.domain.Order;
+import com.restoflow.domain.order.Order;
 
 import java.util.ArrayList;
 import java.util.HashMap;

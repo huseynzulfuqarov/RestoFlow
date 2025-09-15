@@ -1,4 +1,4 @@
-package com.restoflow.domain;
+package com.restoflow.domain.old;
 
 import lombok.Data;
 

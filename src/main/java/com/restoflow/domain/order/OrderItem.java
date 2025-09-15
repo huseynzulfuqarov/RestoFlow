@@ -1,5 +1,6 @@
-package com.restoflow.domain;
+package com.restoflow.domain.order;
 
+import com.restoflow.domain.old.MenuItem;
 import lombok.Data;
 
 @Data

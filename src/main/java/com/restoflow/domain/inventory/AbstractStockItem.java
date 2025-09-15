@@ -1,0 +1,19 @@
+package com.restoflow.domain.inventory;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+public abstract class AbstractStockItem {
+    private Long id;
+    private String name;
+
+    public AbstractStockItem(String name){
+        this.name = name;
+    }
+}

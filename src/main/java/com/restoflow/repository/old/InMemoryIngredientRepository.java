@@ -1,6 +1,7 @@
-package com.restoflow.repository;
+package com.restoflow.repository.old;
 
-import com.restoflow.domain.Ingredient;
+import com.restoflow.domain.inventory.Ingredient;
+import com.restoflow.repository.Repository;
 
 import java.util.HashMap;
 import java.util.List;

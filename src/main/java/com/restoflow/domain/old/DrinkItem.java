@@ -1,4 +1,4 @@
-package com.restoflow.domain;
+package com.restoflow.domain.old;
 
 public class DrinkItem extends MenuItem {
 

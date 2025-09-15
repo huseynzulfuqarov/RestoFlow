@@ -1,5 +1,7 @@
-package com.restoflow.domain;
+package com.restoflow.domain.old;
 
+
+import com.restoflow.domain.inventory.Ingredient;
 
 import java.util.Map;
 
