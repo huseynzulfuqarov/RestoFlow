@@ -1,6 +1,6 @@
 package com.restoflow.domain.inventory;
 
-import com.restoflow.enums.Unit;
+import jakarta.persistence.Entity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,15 +8,15 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
-@EqualsAndHashCode(callSuper = false)
-public class Ingredient extends AbstractStockItem{
-    private Unit unit;
-    private double quantityInStock;
+@ToString(callSuper = true)
+@EqualsAndHashCode(callSuper = true)
+@Entity
+public class Ingredient extends AbstractStockItem {
+    public Ingredient() {
+        super();
+    }
 
-    public Ingredient(String name, Unit unit, double quantityInStock) {
-        super(name);
-        this.unit = unit;
-        this.quantityInStock = quantityInStock;
+    public Ingredient(String name, double quantity, String unit, double costPerUnit) {
+        super(name, quantity, unit, costPerUnit);
     }
 }
