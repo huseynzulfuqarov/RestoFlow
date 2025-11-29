@@ -40,21 +40,6 @@ public class MenuService {
         ProductDetailDTO dto = new ProductDetailDTO();
         dto.setId(product.getId());
         dto.setName(product.getName());
-        // Dynamic price calculation
-        // In a real app, we might cache this or calculate on read.
-        // For now, we use the manual price or calculate it if we had a reference to
-        // PricingService here.
-        // But PricingService is logic. Let's assume we want to show the calculated
-        // price.
-        // We need to inject PricingService or move logic.
-        // To avoid circular dependency (if any), let's keep it simple or inject lazily.
-        // For this task, let's just use the manual price or a placeholder,
-        // BUT the requirement says "Dynamic Pricing".
-        // So we should probably use PricingService.
-        // Let's refactor to allow PricingService usage or duplicate logic slightly for
-        // display.
-        // Actually, let's just set it to manualPrice for now and update it in
-        // Controller using PricingService.
         dto.setBasePrice(product.getManualPrice());
 
         if (product instanceof Dish) {

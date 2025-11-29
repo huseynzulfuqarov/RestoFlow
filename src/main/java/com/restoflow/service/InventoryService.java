@@ -19,13 +19,11 @@ public class InventoryService {
 
     public List<AbstractStockItem> getLowStockItems() {
         return stockRepository.findAll().stream()
-                .filter(item -> item.getQuantity() < 10) // Threshold 10
+                .filter(item -> item.getQuantity() < 10)
                 .collect(Collectors.toList());
     }
 
     public List<AbstractStockItem> getSmartRestockPredictions() {
-        // Simple logic: If stock < 20, recommend buying up to 50.
-        // In real app, this would use historical data.
         return stockRepository.findAll().stream()
                 .filter(item -> item.getQuantity() < 20)
                 .collect(Collectors.toList());

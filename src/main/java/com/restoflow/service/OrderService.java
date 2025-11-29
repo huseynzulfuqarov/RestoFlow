@@ -84,12 +84,10 @@ public class OrderService {
         return createOrder(items, username);
     }
 
-    // Overloaded method for backward compatibility (if needed) or internal use
     @Transactional
     public Order createOrder(List<OrderItem> items, String username) {
         double totalPrice = items.stream().mapToDouble(i -> i.getCalculatedPrice() * i.getQuantity()).sum();
 
-        // Fix: Use Collectors.toList() for compatibility
         List<Product> products = items.stream().map(OrderItem::getProduct).collect(Collectors.toList());
         int estimatedTime = timeEstimationService.estimateDeliveryTimeInMinutes(products);
 
@@ -113,7 +111,6 @@ public class OrderService {
         return savedOrder;
     }
 
-    // Method used by Simulation (RestoFlowApplication) which doesn't pass username
     @Transactional
     public Order createOrder(List<OrderItem> items) {
         return createOrder(items, null);

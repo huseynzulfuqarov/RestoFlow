@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "app_user") // User is a reserved keyword in SQL
+@Table(name = "app_user")
 public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String password; // Basic hashing will be done manually
+    private String password;
 
     public User(String name, String password) {
         this.name = name;

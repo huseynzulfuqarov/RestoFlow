@@ -58,7 +58,6 @@ public class AdminController {
 
         if (product instanceof Dish) {
             Dish dish = (Dish) product;
-            // Clear existing recipe? Or update? Let's replace for simplicity.
             dish.getRecipe().clear();
 
             for (Map.Entry<Long, Double> entry : newRecipeIds.entrySet()) {

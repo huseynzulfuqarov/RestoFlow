@@ -19,7 +19,7 @@ public abstract class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private double manualPrice; // price set manually
+    private double manualPrice;
     private double overheadCost;
     private double profitMargin;
 

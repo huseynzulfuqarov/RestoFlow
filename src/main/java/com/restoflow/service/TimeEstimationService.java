@@ -23,7 +23,6 @@ public class TimeEstimationService {
     public int estimateDeliveryTimeInMinutes(List<Product> newItems) {
         int currentKitchenLoad = 0;
 
-        // Calculate load from active orders
         List<Order> activeOrders = orderRepository.findAll().stream()
                 .filter(o -> o.getStatus() == OrderStatus.PENDING || o.getStatus() == OrderStatus.PREPARING)
                 .collect(Collectors.toList());
@@ -36,7 +35,6 @@ public class TimeEstimationService {
             }
         }
 
-        // Add time for new items
         int newOrderTime = 0;
         for (Product product : newItems) {
             if (product instanceof Dish) {
@@ -44,11 +42,8 @@ public class TimeEstimationService {
             }
         }
 
-        // Simple algorithm: Kitchen load / number of chefs (assume 2) + new order time
-        // This is a simulation, so we can be creative
         int estimatedTime = (currentKitchenLoad / 2) + newOrderTime;
 
-        // Minimum time
         return Math.max(estimatedTime, 15);
     }
 }

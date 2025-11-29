@@ -7,5 +7,5 @@ import java.util.List;
 public class OrderItemRequestDTO {
     private Long productId;
     private int quantity;
-    private List<Long> selectedOptionIds; // IDs of selected CustomizationOptions
+    private List<Long> selectedOptionIds;
 }

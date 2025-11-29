@@ -17,27 +17,23 @@ public class PricingService {
     private OperationalSettingsRepository settingsRepository;
 
     public double calculateDynamicPrice(Product product) {
-        // Get current settings or default
         OperationalSettings settings = settingsRepository.findById(1L).orElse(new OperationalSettings());
 
         double baseCost = 0;
 
         if (product instanceof Dish) {
             Dish dish = (Dish) product;
-            // 1. Ingredient Costs
             if (dish.getRecipe() != null) {
                 for (Map.Entry<Ingredient, Double> entry : dish.getRecipe().entrySet()) {
                     baseCost += entry.getKey().getCostPerUnit() * entry.getValue();
                 }
             }
 
-            // 2. Labor & Utility Costs (Time based)
             double timeCost = dish.getPreparationTime()
                     * (settings.getLaborCostPerMinute() + settings.getUtilityCostPerMinute());
             baseCost += timeCost;
         }
 
-        // 3. Overhead & Profit
         double totalCost = baseCost + product.getOverheadCost();
         return totalCost + product.getProfitMargin();
     }

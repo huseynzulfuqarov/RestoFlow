@@ -23,9 +23,8 @@ public class InventoryController {
 
     @GetMapping("/alerts")
     public ResponseEntity<List<AbstractStockItem>> getLowStockAlerts() {
-        // Simple logic: quantity < 10
         return ResponseEntity.ok(stockRepository.findAll().stream()
-                .filter(i -> i.getQuantity() < 10) // Threshold could be dynamic
+                .filter(i -> i.getQuantity() < 10)
                 .collect(Collectors.toList()));
     }
 
@@ -35,9 +34,6 @@ public class InventoryController {
         AbstractStockItem item = stockRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Item not found"));
 
-        // Update weighted average cost or just new cost?
-        // Requirement: "New raw material price... update menu price"
-        // Let's update costPerUnit to the new price.
         item.setQuantity(item.getQuantity() + quantity);
         item.setCostPerUnit(costPerUnit);
 

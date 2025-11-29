@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "restaurant_order") // Order is a reserved keyword in SQL
+@Table(name = "restaurant_order")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

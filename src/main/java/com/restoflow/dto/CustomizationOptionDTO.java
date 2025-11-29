@@ -6,5 +6,5 @@ import lombok.Data;
 public class CustomizationOptionDTO {
     private Long id;
     private String name;
-    private double price; // Sales price
+    private double price;
 }

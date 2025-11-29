@@ -21,9 +21,9 @@ public class Dish extends Product {
     @CollectionTable(name = "dish_recipe", joinColumns = @JoinColumn(name = "dish_id"))
     @MapKeyJoinColumn(name = "ingredient_id")
     @Column(name = "quantity")
-    private Map<Ingredient, Double> recipe; // Ingredient -> Quantity required
+    private Map<Ingredient, Double> recipe;
 
-    private int preparationTime; // in minutes
+    private int preparationTime; // in minutes //
 
     public Dish() {
         super();

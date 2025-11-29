@@ -6,5 +6,4 @@ import lombok.Data;
 public class OrderItemDTO {
     private Long productId;
     private int quantity;
-    // Simplified for now, can add customization IDs later
 }
